@@ -17,37 +17,45 @@ def supersort(a, k):
     return construct_output(a, positions)
 
 def count_values(a, k):
-    """
-    Params:
-      a.....input list
-      k.....maximum value in a
-      
-    Returns:
-      a list of k values; element i of the list indicates
-      how often value i appears in a
-      
-    >>> count_values([2,2,1,0,1,0,1,3], 3)
-    [2, 3, 2, 1]
-    """
-    ###TODO
-    pass
+  """
+  Params:
+    a.....input list
+    k.....maximum value in a
+    
+  Returns:
+    a list of k values; element i of the list indicates
+    how often value i appears in a
+    
+  >>> count_values([2,2,1,0,1,0,1,3], 3)
+  [2, 3, 2, 1]
+  """
+  output = [0]*(k+1)
+  for element in a:
+    output[element]+=1
+  return output
+    
+    
+
 
 def test_count_values():
     assert count_values([2,2,1,0,1,0,1,3], 3) == [2, 3, 2, 1]
     
 def get_positions(counts):
-    """
-    Params:
-      counts...counts of each value in the input
-    Returns:
-      a list p where p[i] indicates the location of the first
-      appearance of i in the desired output.
-
-    >>> get_positions([2, 3, 2, 1])
-    [0, 2, 5, 7]    
-    """
-    ###TODO
-    pass
+  """
+  Params:
+  counts...counts of each value in the input
+  Returns:
+  a list p where p[i] indicates the location of the first
+  appearance of i in the desired output.
+  
+  >>> get_positions([2, 3, 2, 1])
+  [0, 2, 5, 7]    
+  """  
+  tuple = scan(plus, 0, counts)
+  outputList = tuple[0]
+  p = outputList[:-1]
+  p.insert(0, 0)
+  return p
     
 def test_get_positions():
     assert get_positions([2, 3, 2, 1]) == [0, 2, 5, 7]
@@ -86,11 +94,10 @@ def test_count_values_mr():
 
 def count_map(value):
     ###TODO
-    pass
+    return [(value, 1)]
 
 def count_reduce(group):
-    ###TODO
-    pass
+    return ((group[0]), len(group[1])) 
 
 
 # the below functions are provided for use above.
