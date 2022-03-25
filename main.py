@@ -97,7 +97,8 @@ def count_map(value):
     return [(value, 1)]
 
 def count_reduce(group):
-    return ((group[0]), len(group[1])) 
+    return ((group[0]), (group[1])) 
+
 
 
 # the below functions are provided for use above.
