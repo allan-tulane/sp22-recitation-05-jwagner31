@@ -61,21 +61,27 @@ def test_get_positions():
     assert get_positions([2, 3, 2, 1]) == [0, 2, 5, 7]
     
 def construct_output(a, positions):
-    """
-    Construct the final, sorted output.
-
-    Params:
-      a...........input list
-      positions...list of first location of each value in the output.
-      
-    Returns:
-      sorted version of a
-
-    >>> construct_output([2,2,1,0,1,0,1,3], [0, 2, 5, 7])
-    [0,0,1,1,1,2,2,3]    
-    """
-    ###TODO
-    pass
+  """
+  Construct the final, sorted output.
+  
+  Params:
+  a...........input list
+  positions...list of first location of each value in the output.
+  
+  Returns:
+  sorted version of a
+  
+  >>> construct_output([2,2,1,0,1,0,1,3], [0, 2, 5, 7])
+  [0,0,1,1,1,2,2,3]    
+  """
+  output = [0]*(len(a))
+  for element in a:
+    index = positions[element]
+    output[index] = element
+    positions[element] += 1
+  return output
+    
+    
 
 def test_construct_output():
     assert construct_output([2,2,1,0,1,0,1,3], [0, 2, 5, 7]) == [0,0,1,1,1,2,2,3]
